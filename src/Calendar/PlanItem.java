@@ -14,12 +14,14 @@ public class PlanItem {
 		all_plan.add(plan);
 	}
 	
-	public int get_component_number() {
-		return all_plan.size();
+	public void get_component_number() {
+		System.out.println(all_plan.size() + "개의 일정이 있습니다");
 	}
 	
 	public void print_plan() {
+		System.out.println("---일정---");
 		for(int i = 0; i < all_plan.size(); i++)
 			System.out.println(all_plan.get(i));
+		System.out.println("---------");
 	}
 }

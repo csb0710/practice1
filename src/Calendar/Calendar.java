@@ -13,20 +13,32 @@ public class Calendar {
 	HashMap<Date, PlanItem> datePlan = new HashMap<>();
 	
 	public void add_datePlan(String date, String plan) {
-		PlanItem newPlan = new PlanItem(plan);
 		Date new_date = getDatefromString(date);
 		if(datePlan.containsKey(new_date)) {
 			datePlan.get(new_date).add_plan(plan);
 		}
-		datePlan.put(new_date, newPlan);
+		else {
+			PlanItem newPlan = new PlanItem(plan);
+			datePlan.put(new_date, newPlan);
+		}
 	}
 	
 	public void get_datePlan(String date) {
 		Date new_date = getDatefromString(date);
-		if(datePlan.get(new_date) != null) {
+		if(datePlan.containsKey(new_date)) {
 			PlanItem plan = datePlan.get(new_date);
-			System.out.println(plan.get_component_number() + "개 발견");
+			plan.get_component_number();
 			plan.print_plan();
+		}
+		else
+			System.out.println("일정이 존재하지 않습니다");
+	}
+	
+	public void delete_datePlan(String date) {
+		Date new_date = getDatefromString(date);
+		if(datePlan.containsKey(new_date)) { 
+			datePlan.remove(new_date);
+			System.out.println(date + "의 일정이 삭제되었습니다");
 		}
 	}
 	
