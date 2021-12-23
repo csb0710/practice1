@@ -1,9 +1,12 @@
 package Calendar;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+
 
 public class Calendar {
 	int year = 0;
@@ -20,6 +23,15 @@ public class Calendar {
 		else {
 			PlanItem newPlan = new PlanItem(plan);
 			datePlan.put(new_date, newPlan);
+		}
+		try {
+			File file = new File(date + ".txt");
+			FileWriter writer = new FileWriter(file, true);
+			writer.write(plan + System.lineSeparator());
+			writer.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("No such file exists.");
 		}
 	}
 	

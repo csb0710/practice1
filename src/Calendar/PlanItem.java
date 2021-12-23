@@ -2,11 +2,9 @@ package Calendar;
 import java.util.ArrayList;
 
 public class PlanItem {
-	String plan;
 	ArrayList<String> all_plan = new ArrayList<>();
 	
 	public PlanItem(String plan) {
-		this.plan = plan;
 		all_plan.add(plan);
 	}
 	
